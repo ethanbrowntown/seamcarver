@@ -33,10 +33,13 @@ public class GUI extends Application {
         grid.setPadding(new Insets(25, 25, 25, 25));
         Scene scene = new Scene(grid, 600, 400);
 
+        scene.getStylesheets().add("styles.css");
+
         primaryStage.setScene(scene);
         primaryStage.show();
 
         Text scenetitle = new Text("Seam Carver");
+        scenetitle.setFill(Color.WHITE);
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
@@ -70,6 +73,7 @@ public class GUI extends Application {
         hbSaveBtn.getChildren().add(saveBtn);
 
         final Text actiontarget = new Text();
+        actiontarget.setFont(Font.font("Tahoma", FontWeight.NORMAL, 16));
         grid.add(actiontarget, 1, 6);
 
         uploadBtn.setOnAction(e -> {
@@ -79,7 +83,7 @@ public class GUI extends Application {
             if (file != null) {
                 try {
                     pic = new Picture(file);
-                    actiontarget.setFill(Color.BLACK);
+                    actiontarget.setFill(Color.WHITE);
                     actiontarget.setText("Selected: " + file.getName());
                 } catch (IllegalArgumentException i) {
                     i.printStackTrace();
@@ -103,7 +107,7 @@ public class GUI extends Application {
                     actiontarget.setFill(Color.FIREBRICK);
                     actiontarget.setText("Width and height must not be larger than target image!");
                 } else {
-                    actiontarget.setFill(Color.BLACK);
+                    actiontarget.setFill(Color.WHITE);
                     sc = new SeamCarver(pic);
                     int oldWidth = sc.width();
                     int oldHeight = sc.height();
