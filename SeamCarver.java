@@ -224,7 +224,7 @@ public class SeamCarver {
         }
     }
 
-    //  command line interface
+    // command line interface
     public static void main(String[] args) {
         SeamCarver sc = new SeamCarver(new Picture(args[0]));
         int width = Integer.parseInt(args[1]);
@@ -232,10 +232,12 @@ public class SeamCarver {
         if (width > sc.width() || height > sc.height() || width < 1 || height < 1) {
             throw new IllegalArgumentException("Height and width must be positive and no greater than original");
         } else {
-            for (int i = 0; i < sc.width() - width; i++) {
+            int oldWidth = sc.width();
+            int oldHeight = sc.height();
+            for (int i = 0; i < oldWidth - width; i++) {
                 sc.removeVerticalSeam(sc.findVerticalSeam());
             }
-            for (int i = 0; i < sc.height() - height; i++) {
+            for (int i = 0; i < oldHeight - height; i++) {
                 sc.removeHorizontalSeam(sc.findHorizontalSeam());
             }
             sc.pic.save(args[0]);
