@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 .root {
      -fx-background-image: url("stars.png");
      -fx-text-fill: #FFFFFF;
+=======
+.root {
+     -fx-background-image: url("stars.png");
+     -fx-text-fill: #FFFFFF;
+>>>>>>> 0200d42... added stylesheet
 }
